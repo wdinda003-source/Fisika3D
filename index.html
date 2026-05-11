@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b1220" />
+    <title>Fisika 3D Interaktif V7</title>
+    <meta name="description" content="Laboratorium virtual 3D untuk pembelajaran Fisika dengan parameter interaktif, animasi Babylon.js, dan simulasi Rapier." />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <noscript>Website ini membutuhkan JavaScript aktif agar simulasi 3D dapat berjalan.</noscript>
+
+    <div id="app" class="app-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Laboratorium Virtual</p>
+          <h1>Fisika 3D Interaktif</h1>
+          <p class="hero-text">
+            Pilih materi, ubah besaran fisika, lalu amati perubahan gerak secara langsung.
+          </p>
+          <div class="hero-badges">
+            <span>Babylon.js</span>
+            <span>Rapier</span>
+            <span>Mobile-first</span>
+          </div>
+        </div>
+
+        <div class="status-card">
+          <p>Status Engine</p>
+          <strong id="engineStatus">Memuat engine...</strong>
+          <small id="engineDetail">Menyiapkan WebGL dan simulasi.</small>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="left-panel">
+          <div class="section-heading">
+            <span>01</span>
+            <div>
+              <h2>Materi Fisika</h2>
+              <p>Tap kartu materi untuk mengganti simulasi.</p>
+            </div>
+          </div>
+          <div id="lessonButtons" class="lesson-grid" aria-label="Daftar materi fisika"></div>
+
+          <div class="control-card">
+            <div class="section-heading compact">
+              <span>02</span>
+              <div>
+                <h2>Parameter</h2>
+                <p>Ubah nilai besaran fisika.</p>
+              </div>
+            </div>
+            <div id="parameterPanel" class="parameter-panel"></div>
+          </div>
+        </section>
+
+        <section class="stage-panel">
+          <div class="canvas-card">
+            <div class="canvas-topbar">
+              <div>
+                <p id="lessonLabel">Materi aktif</p>
+                <h2 id="lessonTitle">Gerak jatuh bebas</h2>
+              </div>
+              <div class="action-row">
+                <button id="playBtn" class="ghost-btn" type="button">Play</button>
+                <button id="pauseBtn" class="ghost-btn" type="button">Pause</button>
+                <button id="resetBtn" class="ghost-btn" type="button">Reset</button>
+                <button id="zoomInBtn" class="ghost-btn" type="button">Zoom In</button>
+                <button id="zoomOutBtn" class="ghost-btn" type="button">Zoom Out</button>
+                <button id="fullscreenBtn" class="primary-btn" type="button">Full Screen</button>
+              </div>
+            </div>
+
+            <div id="canvasWrap" class="canvas-wrap">
+              <canvas id="renderCanvas" aria-label="Area animasi 3D"></canvas>
+              <div id="loadingOverlay" class="loading-overlay">
+                <div class="loader"></div>
+                <p>Menyiapkan animasi 3D...</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gesture-card">
+            <div class="gesture-copy">
+              <p class="card-kicker">Gesture Kamera</p>
+              <h3>Kontrol dengan tangan</h3>
+              <p id="gestureHint">Klik aktifkan, izinkan kamera, lalu gunakan gesture: telapak terbuka = play, kepalan = pause, telunjuk = zoom in, dua jari = zoom out, jempol = reset. Untuk HP, gunakan GitHub Pages HTTPS atau npm run dev:https.</p>
+            </div>
+            <div class="gesture-actions">
+              <button id="gestureBtn" class="primary-btn" type="button">Aktifkan Gesture</button>
+              <span id="gestureBadge" class="gesture-badge">Nonaktif</span>
+            </div>
+            <video id="gestureVideo" class="gesture-video" playsinline muted autoplay></video>
+          </div>
+
+          <div class="info-grid">
+            <article class="info-card">
+              <p class="card-kicker">Konsep</p>
+              <h3 id="conceptTitle">Gerak jatuh bebas</h3>
+              <p id="conceptText"></p>
+            </article>
+            <article class="info-card">
+              <p class="card-kicker">Rumus</p>
+              <div id="formulaText" class="formula-box"></div>
+            </article>
+            <article class="info-card">
+              <p class="card-kicker">Data Real-time</p>
+              <div id="dataPanel" class="data-panel"></div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
